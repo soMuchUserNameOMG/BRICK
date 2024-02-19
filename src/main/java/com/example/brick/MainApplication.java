@@ -14,6 +14,7 @@ import java.io.IOException;
 public class MainApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
+        int i;
         AnchorPane rootPane = new AnchorPane();
         PhysicsManager physicsManager = new PhysicsManager();
         LayoutManager layoutManager = new LayoutManager(rootPane);
