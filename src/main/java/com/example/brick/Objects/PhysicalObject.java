@@ -6,6 +6,13 @@ public abstract class PhysicalObject extends LayoutObject {
     public static final int MOVING = 1;
     public static final int FOLLOWING_CURSOR = 2;
 
+    public PhysicalObject() {
+    }
+
+    public PhysicalObject(double x, double y) {
+        super(x, y);
+    }
+
     public int getAttribute() {
         return attribute;
     }
@@ -15,14 +22,4 @@ public abstract class PhysicalObject extends LayoutObject {
         this.attribute = attribute;
     }
 
-    public PhysicalObject() {
-    }
-
-    public PhysicalObject(String SHAPE_SORT) {
-        super(SHAPE_SORT);
-    }
-
-    public PhysicalObject(double x, double y, String SHAPE_SORT) {
-        super(x, y, SHAPE_SORT);
-    }
 }

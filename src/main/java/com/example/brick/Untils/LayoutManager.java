@@ -19,7 +19,9 @@ public class LayoutManager {
     }
 
     public void add(LayoutObject layoutObject) {
+
         objectsList.add(layoutObject);
+
     }
 
     public void addAll(LayoutObject... layoutObjects) {

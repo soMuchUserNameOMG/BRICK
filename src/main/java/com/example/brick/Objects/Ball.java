@@ -1,5 +1,6 @@
 package com.example.brick.Objects;
 
+import com.example.brick.Events.Event;
 import com.example.brick.Untils.Shapes;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -8,12 +9,9 @@ import javafx.scene.shape.Shape;
 
 public class Ball extends PhysicalObject {
     private double radius;
-    private Paint color;
 
-    private Shape renderableShape;
 
     public Ball(double radius) {
-        super(Shapes.CIRCLE);
         this.radius = radius;
         this.color = Color.WHITE;
     }
@@ -39,10 +37,13 @@ public class Ball extends PhysicalObject {
         this.color = color;
     }
 
+    @Override
+    protected Shape constructRenderableShape() {
+        return new Circle(radius,color);
+    }
 
     @Override
-    public Shape getRenderableShape() {
-        this.renderableShape = new Circle(radius,color);
-        return this.renderableShape;
+    public void addEventHandler(Event e) {
+
     }
 }

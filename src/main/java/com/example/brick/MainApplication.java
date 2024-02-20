@@ -1,10 +1,13 @@
 package com.example.brick;
 
 import com.example.brick.Objects.Ball;
+import com.example.brick.Objects.Plank;
+import com.example.brick.Untils.EventListener;
 import com.example.brick.Untils.LayoutManager;
 import com.example.brick.Untils.PhysicsManager;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
@@ -16,11 +19,13 @@ public class MainApplication extends Application {
     public void start(Stage stage) throws IOException {
         int i;
         AnchorPane rootPane = new AnchorPane();
-        PhysicsManager physicsManager = new PhysicsManager();
         LayoutManager layoutManager = new LayoutManager(rootPane);
-        Ball ball = new Ball(5);
-        ball.setXY(100,100);
-        layoutManager.add(ball);
+        EventListener eventListener = new EventListener();
+        PhysicsManager physicsManager = new PhysicsManager(layoutManager,eventListener);
+        Plank plank = new Plank(200,20);
+        plank.setXY(400,700);
+        Button button = new Button();
+        layoutManager.add(plank);
         layoutManager.renderAll();
         Scene scene = new Scene(rootPane,1000,900, Color.BLACK);
         stage.setTitle("BRICK");

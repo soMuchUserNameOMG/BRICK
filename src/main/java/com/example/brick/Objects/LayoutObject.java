@@ -1,11 +1,14 @@
 package com.example.brick.Objects;
 
+import com.example.brick.Interfaces.Eventable;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Shape;
 
-public abstract class LayoutObject {
-    private double x;
-    private double y;
-    protected String SHAPE_SORT;
+public abstract class LayoutObject implements Eventable {
+    protected double x;
+    protected double y;
+    protected Paint color;
+    protected Shape renderableShape;
 
     public double getX() {
         return x;
@@ -28,31 +31,25 @@ public abstract class LayoutObject {
         this.y = y;
     }
 
-    public String getSHAPE_SORT() {
-        return SHAPE_SORT;
-    }
-
-    public void setSHAPE_SORT(String SHAPE_SORT) {
-        this.SHAPE_SORT = SHAPE_SORT;
-    }
-
 
     public LayoutObject() {
 
     }
-    public LayoutObject(String SHAPE_SORT) {
-        this.SHAPE_SORT = SHAPE_SORT;
-    }
 
-    public LayoutObject(double x, double y, String SHAPE_SORT) {
+    public LayoutObject(double x, double y) {
         this.x = x;
         this.y = y;
-        this.SHAPE_SORT = SHAPE_SORT;
     }
 
-    public String getShapeSort() {
-        return SHAPE_SORT;
+    public Shape getRenderableShape() {
+        if(this.renderableShape == null) {
+            this.renderableShape = constructRenderableShape();
+        }
+        return this.renderableShape;
     }
 
-    public abstract Shape getRenderableShape();
+    protected abstract Shape constructRenderableShape();
+
+
+
 }
