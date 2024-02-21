@@ -1,6 +1,9 @@
 package com.example.brick.Untils;
 
 import com.example.brick.Objects.LayoutObject;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Shape;
 
@@ -29,11 +32,11 @@ public class LayoutManager {
     }
 
     private void render(LayoutObject layoutObject) {
-        double x = layoutObject.getX();
-        double y = layoutObject.getY();
         Shape renderableShape = layoutObject.getRenderableShape();
-        renderableShape.setLayoutX(x);
-        renderableShape.setLayoutY(y);
+        renderableShape.setLayoutX(layoutObject.getX());
+        renderableShape.setLayoutY(layoutObject.getY());
+        layoutObject.xProperty().addListener((observable, oldValue, newValue) -> renderableShape.setLayoutX(newValue.doubleValue()));
+        layoutObject.yProperty().addListener((observable, oldValue, newValue) -> renderableShape.setLayoutY(newValue.doubleValue()));
         rootPane.getChildren().add(renderableShape);
     }
 
@@ -44,9 +47,6 @@ public class LayoutManager {
         }
     }
 
-    public void renderFrom(int index) {
-
-    }
 
 
 }

@@ -1,6 +1,5 @@
 package com.example.brick.Objects;
 
-import com.example.brick.Events.Event;
 import com.example.brick.Untils.Shapes;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
@@ -42,8 +41,4 @@ public class Ball extends PhysicalObject {
         return new Circle(radius,color);
     }
 
-    @Override
-    public void addEventHandler(Event e) {
-
-    }
 }
